@@ -10,8 +10,17 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
+    "bootstrap": "^5.0.0-alpha2",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "gsap": "^3.5.1",
+    "nuxt": "^2.14.6",
+    "nuxt-webfontloader": "^1.1.0",
+    "vue-scrollto": "^2.19.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@nuxtjs/style-resources": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "nuxt-svg-loader": "^1.2.0",
+    "sass-loader": "^10.0.3"
+  }
 }

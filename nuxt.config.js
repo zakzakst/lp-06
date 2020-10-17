@@ -17,10 +17,12 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    '@/assets/style.scss',
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    {src: '@/plugins/vue-scrollto'},
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -34,6 +36,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'nuxt-svg-loader',
+    'nuxt-webfontloader',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -41,5 +45,21 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-  }
+    extractCSS: true,
+    transpile: [
+      'gsap',
+    ],
+  },
+
+  styleResources: {
+    scss: [
+      '@/assets/sass/base/_variables.scss'
+    ]
+  },
+
+  webfontloader: {
+    google: {
+      families: ['Noto+Sans+JP:wght@100;300;700;900']
+    }
+  },
 }

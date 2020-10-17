@@ -1,0 +1,22 @@
+TODO:
+  ☐ scrollTriggerリサイズ時の挙動確認
+  ☐ bootstrapカスタマイズCSS作る
+  ✔ vue-scrolltoのヘッダー幅分の調整（https://www.npmjs.com/package/vue-scrollto#programmatically） @done(20-10-17 19:58)
+  ✔ vue-scrolltoのmethodsでの利用（https://hafilog.com/vue-scrollto） @done(20-10-17 19:38)
+  ✔ ヘッダーアクティブリンクの挙動 @done(20-10-17 20:37)
+  ✔ 矢印アイコン付ける @done(20-10-17 20:37)
+  ☐ webfont設定
+
+最後に対応:
+  ☐ mixinsにまとめるスクリプトあるか検討
+  ☐ 最後にVScodeまわりの修正あれば「00」のほうにコピーしておく
+
+Archive:
+
+Memo:
+  ■■■ 参考 ■■■
+
+  ■■■ 反省など ■■■
+  ・dev表示の自動更新でイベントリスナーが二重にかかってるのに気づかず、ちょっととまどった。
+
+  ・スクロール連動多いとpageファイルにスクリプトが多くなり、見通しが悪くなる（流用はできないが、関連スクリプトまとめる目的でmixinsを使うか？）
