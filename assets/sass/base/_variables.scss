@@ -4,9 +4,11 @@
 // lg: 1024px
 
 // BREAKPOINT
+$breakpoint-sm: 480px;
 $breakpoint-md: 768px;
 
 $breakpoints: (
+  'sm': 'screen and (min-width: #{$breakpoint-sm})',
   'md': 'screen and (min-width: #{$breakpoint-md})',
 ) !default;
 
@@ -27,6 +29,8 @@ $color-white: #ffffff;
 $color-black: #333333;
 $color-text--default: #333333;
 $color-text--active: #0d6efd;
+$color-placeholder: #dddddd;
 
 // TRANSITION
+$transition-fast: .3s;
 $transition-default: .5s;
