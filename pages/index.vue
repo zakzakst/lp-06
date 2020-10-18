@@ -1,5 +1,5 @@
 <template>
-  <div class="container page-body" style="background: #eee">
+  <div class="page-container" ref="pageContainer">
     <global-header
       :links="globalLinks"
       :activeLink="globalLinkCurrent"
@@ -16,6 +16,10 @@
       @clickLink="menuHideScroll"
       @hideLinks="menuHide"
     />
+    <div class="container">
+      <h2 class="text-center mb-4">よくあるご質問</h2>
+      <faq-Items />
+    </div>
     <div style="height: 1000px"></div>
     <div style="height: 1000px" ref="link1" class="linkChange" id="link1">
       link1
@@ -26,7 +30,7 @@
     <div style="height: 1000px" ref="link3" class="linkChange" id="link3">
       link3
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-sm">
         One of three columns
       </div>
@@ -36,7 +40,7 @@
       <div class="col-sm">
         One of three columns
       </div>
-    </div>
+    </div> -->
     <div id="form" style="height: 1000px">
       form
     </div>
@@ -46,6 +50,7 @@
 <script>
 import GlobalHeader from '@/components/GlobalHeader'
 import GlobalMenu from '@/components/GlobalMenu'
+import FaqItems from '@/components/FaqItems'
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -56,6 +61,9 @@ if (process.client) {
 export default {
   data() {
     return {
+      windowFixTargetIdList: [
+        'global-header'
+      ],
       globalLinks: [
         {
           name: 'link1',
@@ -81,6 +89,7 @@ export default {
   components: {
     GlobalHeader,
     GlobalMenu,
+    FaqItems,
   },
   methods: {
     test() {
@@ -88,28 +97,34 @@ export default {
     },
     windowFix() {
       const scrollBarWidth = window.innerWidth - document.body.clientWidth;
-      document.documentElement.style.paddingRight = `${scrollBarWidth}px`;
       document.documentElement.style.overflow = 'hidden';
+      document.documentElement.style.paddingRight = `${scrollBarWidth}px`;
+      this.windowFixTargetIdList.forEach(targetId => {
+        document.getElementById(targetId).style.paddingRight = `${scrollBarWidth}px`;
+      });
     },
     windowFixClear() {
-      document.body.style.paddingRight = null;
       document.documentElement.style.overflow = null;
+      document.documentElement.style.paddingRight = null;
+      this.windowFixTargetIdList.forEach(targetId => {
+        document.getElementById(targetId).style.paddingRight = null;
+      });
     },
     scrollTo(path) {
       this.$scrollTo(path, {
         offset: -72,
       });
     },
-    headerBgHandler() {
+    headerBgHandler(el) {
       ScrollTrigger.create({
-        trigger: '.page-body',
+        trigger: el,
         start: 'top -50px',
         end: 'top -50px',
         onEnter: () => {
-          this.bgIsActive = true;
+          this.headerBgIsActive = true;
         },
         onEnterBack: () => {
-          this.bgIsActive = false;
+          this.headerBgIsActive = false;
         },
       });
     },
@@ -141,7 +156,7 @@ export default {
     }
   },
   mounted() {
-    this.headerBgHandler();
+    this.headerBgHandler(this.$refs.pageContainer);
     this.globalLinks.forEach(link => {
       this.headerLinkHandler(this.$refs[link.name]);
     });
@@ -150,4 +165,8 @@ export default {
 </script>
 
 <style>
+.page-container {
+  padding-top: 72px;
+  background: #eee;
+}
 </style>
