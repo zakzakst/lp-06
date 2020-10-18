@@ -16,10 +16,18 @@
       @clickLink="menuHideScroll"
       @hideLinks="menuHide"
     />
-    <div class="container">
-      <h2 class="text-center mb-4">よくあるご質問</h2>
-      <faq-Items />
-    </div>
+    <section>
+      <div class="container">
+        <h2 class="text-center mb-4">よくあるご質問</h2>
+        <faq-Items />
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="text-center mb-4">お客様の声</h2>
+      </div>
+      <voice-Items />
+    </section>
     <div style="height: 1000px"></div>
     <div style="height: 1000px" ref="link1" class="linkChange" id="link1">
       link1
@@ -51,6 +59,7 @@
 import GlobalHeader from '@/components/GlobalHeader'
 import GlobalMenu from '@/components/GlobalMenu'
 import FaqItems from '@/components/FaqItems'
+import VoiceItems from '@/components/VoiceItems'
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -90,6 +99,7 @@ export default {
     GlobalHeader,
     GlobalMenu,
     FaqItems,
+    VoiceItems,
   },
   methods: {
     test() {
