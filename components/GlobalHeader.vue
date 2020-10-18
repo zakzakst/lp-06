@@ -1,9 +1,11 @@
 <template>
-  <div class="header__wrapper" :class="{'is-active': bgIsActive}">
+  <div class="header__wrapper" :class="{'is-active--bg': bgIsActive, 'is-active--menu': menuIsActive}">
     <div class="container">
       <div class="header">
-        <div class="header__logo">LOGO</div>
-        <ul class="header__links mr-auto">
+        <div class="header__logo">
+          <img src="/img/logo.png" alt="LOGO">
+        </div>
+        <ul class="header__links">
           <li v-for="link in links" :key="link.label">
             <a
               href="#"
@@ -11,14 +13,15 @@
               class="header__links-item"
               :class="{'is-active': link.name === activeLink}"
             >
-              <links-icon class="header__links-icon" />
-              {{ link.label }}
+              <links-icon class="header__links-icon" />{{ link.label }}
             </a>
           </li>
         </ul>
-        <div class="header__button">
-          <button @click.prevent="clickBtn">button</button>
-        </div>
+        <button @click.prevent="clickBtn" class="header__btn ml-auto">お問合せ</button>
+        <button @click.prevent="clickMenuBtn" class="header__menu-btn">
+          <menu-icon v-if="!menuIsActive" />
+          <close-icon v-else />
+        </button>
       </div>
     </div>
   </div>
@@ -26,11 +29,15 @@
 
 <script>
 import linksIcon from '@/static/bootstrap-icons/caret-down-fill.svg'
+import menuIcon from '@/static/bootstrap-icons/list.svg'
+import closeIcon from '@/static/bootstrap-icons/x.svg'
 
 export default {
-  props: ['links', 'activeLink', 'bgIsActive'],
+  props: ['links', 'activeLink', 'bgIsActive', 'menuIsActive'],
   components: {
-    linksIcon
+    linksIcon,
+    menuIcon,
+    closeIcon,
   },
   methods: {
     clickLink(path) {
@@ -38,12 +45,17 @@ export default {
     },
     clickBtn() {
       this.$emit('clickBtn');
+    },
+    clickMenuBtn() {
+      this.$emit('clickMenuBtn');
     }
   },
 }
 </script>
 
 <style lang="scss">
+@import "@/assets/sass/base/variables";
+
 .header {
   display: flex;
   align-items: center;
@@ -53,18 +65,63 @@ export default {
   top: 0;
   left: 0;
   right: 0;
+  padding: 8px 0 12px;
   transition: background 1s;
-  &.is-active {
-    background: #888;
+  z-index: $z-header;
+  &.is-active--bg {
+    background: rgba(255, 255, 255, .7);
+  }
+  // &.is-active--menu {
+  //   background: rgba(255, 255, 255, 1);
+  // }
+}
+.header__logo {
+  height: 48px;
+  img {
+    height: 100%;
+  }
+}
+.header__links {
+  display: none;
+  margin: 0 0 0 16px;
+  padding: 0;
+  list-style: none;
+  @include mq(md) {
+    display: flex;
   }
 }
 .header__links-item {
+  padding: 0 8px;
+  color: $color-text--default;
+  text-decoration: none;
   &.is-active {
-    color: #000;
+    color: $color-text--active;
   }
 }
 .header__links-icon {
-  width: 30px;
-  height: 30px;
+  width: 12px;
+  height: 12px;
+  margin: 0 2px 2px 0;
+}
+.header__btn {
+  height: 48px;
+  line-height: 48px;
+  padding: 0 12px;
+  color: $color-white;
+  background: $color-primary;
+  border: none;
+}
+.header__menu-btn {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  margin-left: 8px;
+  justify-content: center;
+  align-items: center;
+  background: $color-white;
+  border: solid 1px $color-primary;
+  @include mq(md) {
+    display: none;
+  }
 }
 </style>

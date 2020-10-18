@@ -1,11 +1,20 @@
 <template>
-  <div class="container page-body">
+  <div class="container page-body" style="background: #eee">
     <global-header
-      :links="headerLinks"
-      :activeLink="headerActiveLink"
-      :bgIsActive="bgIsActive"
+      :links="globalLinks"
+      :activeLink="globalLinkCurrent"
+      :bgIsActive="headerBgIsActive"
+      :menuIsActive="menuIsActive"
       @clickLink="scrollTo"
       @clickBtn="scrollTo('#form')"
+      @clickMenuBtn="menuShow"
+    />
+    <global-menu
+      :links="globalLinks"
+      :activeLink="globalLinkCurrent"
+      :isActive="menuIsActive"
+      @clickLink="menuHideScroll"
+      @hideLinks="menuHide"
     />
     <div style="height: 1000px"></div>
     <div style="height: 1000px" ref="link1" class="linkChange" id="link1">
@@ -36,9 +45,10 @@
 
 <script>
 import GlobalHeader from '@/components/GlobalHeader'
+import GlobalMenu from '@/components/GlobalMenu'
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
 if (process.client) {
   gsap.registerPlugin(ScrollTrigger)
 }
@@ -46,7 +56,7 @@ if (process.client) {
 export default {
   data() {
     return {
-      headerLinks: [
+      globalLinks: [
         {
           name: 'link1',
           label: 'リンク1',
@@ -63,59 +73,78 @@ export default {
           path: '#link3',
         },
       ],
-      headerActiveLink: '',
-      bgIsActive: false,
+      globalLinkCurrent: '',
+      headerBgIsActive: false,
+      menuIsActive: false,
     }
   },
   components: {
-    GlobalHeader
+    GlobalHeader,
+    GlobalMenu,
   },
   methods: {
+    test() {
+      console.log('test')
+    },
+    windowFix() {
+      const scrollBarWidth = window.innerWidth - document.body.clientWidth;
+      document.documentElement.style.paddingRight = `${scrollBarWidth}px`;
+      document.documentElement.style.overflow = 'hidden';
+    },
+    windowFixClear() {
+      document.body.style.paddingRight = null;
+      document.documentElement.style.overflow = null;
+    },
     scrollTo(path) {
       this.$scrollTo(path, {
-        offset: -100,
+        offset: -72,
       });
     },
-    bgHandler() {
+    headerBgHandler() {
       ScrollTrigger.create({
         trigger: '.page-body',
         start: 'top -50px',
         end: 'top -50px',
         onEnter: () => {
-          // console.log('enter');
           this.bgIsActive = true;
         },
         onEnterBack: () => {
-          // console.log('enter back');
           this.bgIsActive = false;
         },
-        // markers: true,
       });
     },
-    linkHandler(el) {
-      console.log(el);
+    headerLinkHandler(el) {
       ScrollTrigger.create({
-        // trigger: '.linkChange',
         trigger: el,
         start: 'top 50%',
         end: 'top 50%',
         onEnter: () => {
-          // console.log('linkChange', el.getAttribute('id'));
-          this.headerActiveLink = el.getAttribute('id');
+          this.globalLinkCurrent = el.getAttribute('id');
         },
         onEnterBack: () => {
-          // console.log('linkChange back', el.getAttribute('id'));
-          this.headerActiveLink = el.getAttribute('id');
+          this.globalLinkCurrent = el.getAttribute('id');
         },
-        // markers: true,
       });
+    },
+    menuShow() {
+      this.windowFix();
+      this.menuIsActive = true;
+    },
+    menuHide() {
+      this.windowFixClear();
+      this.menuIsActive = false;
+    },
+    menuHideScroll(path) {
+      this.windowFixClear();
+      this.menuIsActive = false;
+      this.scrollTo(path);
     }
   },
   mounted() {
-    this.bgHandler();
-    this.linkHandler(this.$refs.link1);
-    this.linkHandler(this.$refs.link2);
-    this.linkHandler(this.$refs.link3);
+    this.headerBgHandler();
+    this.globalLinks.forEach(link => {
+      this.headerLinkHandler(this.$refs[link.name]);
+    });
   },
 }
 </script>
