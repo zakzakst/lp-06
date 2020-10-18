@@ -1,17 +1,21 @@
 TODO:
-  ☐ scrollTriggerリサイズ時の挙動確認
   ☐ bootstrapカスタマイズCSS作る
-  ✔ vue-scrolltoのヘッダー幅分の調整（https://www.npmjs.com/package/vue-scrollto#programmatically） @done(20-10-17 19:58)
-  ✔ vue-scrolltoのmethodsでの利用（https://hafilog.com/vue-scrollto） @done(20-10-17 19:38)
-  ✔ ヘッダーアクティブリンクの挙動 @done(20-10-17 20:37)
-  ✔ 矢印アイコン付ける @done(20-10-17 20:37)
   ☐ webfont設定
+  ☐ style-resourcesのvariables.scssが効いてない
 
 最後に対応:
   ☐ mixinsにまとめるスクリプトあるか検討
   ☐ 最後にVScodeまわりの修正あれば「00」のほうにコピーしておく
 
 Archive:
+  ✔ メニュー表示時のウインドウ固定 @done(20-10-18 14:50) @project(TODO)
+  ✔ scrollTriggerリサイズ時の挙動確認 @done(20-10-18 14:06) @project(TODO)
+  ✔ ヘッダーのスタイル作成 @done(20-10-18 14:05) @project(TODO)
+  ✔ ヘッダーSP時のメニュー開閉 @done(20-10-18 14:05) @project(TODO)
+  ✔ vue-scrolltoのヘッダー幅分の調整（https://www.npmjs.com/package/vue-scrollto#programmatically） @done(20-10-17 19:58) @project(TODO)
+  ✔ vue-scrolltoのmethodsでの利用（https://hafilog.com/vue-scrollto） @done(20-10-17 19:38) @project(TODO)
+  ✔ ヘッダーアクティブリンクの挙動 @done(20-10-17 20:37) @project(TODO)
+  ✔ 矢印アイコン付ける @done(20-10-17 20:37) @project(TODO)
 
 Memo:
   ■■■ 参考 ■■■

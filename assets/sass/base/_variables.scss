@@ -1,0 +1,27 @@
+// xs: 0,
+// sm: 480px,
+// md: 768px,
+// lg: 1024px
+
+// BREAKPOINT
+$breakpoint-md: 768px;
+
+$breakpoints: (
+  'md': 'screen and (min-width: #{$breakpoint-md})',
+) !default;
+
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// ZINDEX
+$z-header: 100;
+$z-menu: 101;
+
+// COLORS
+$color-primary: #333333;
+$color-white: #ffffff;
+$color-text--default: #333333;
+$color-text--active: #0d6efd;
