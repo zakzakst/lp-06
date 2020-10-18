@@ -1,5 +1,5 @@
 <template>
-  <div class="header__wrapper" :class="{'is-active--bg': bgIsActive, 'is-active--menu': menuIsActive}">
+  <div class="header__wrapper" id="global-header" :class="{'is-active--bg': bgIsActive, 'is-active--menu': menuIsActive}">
     <div class="container">
       <div class="header">
         <div class="header__logo">
