@@ -16,18 +16,25 @@
       @clickLink="menuHideScroll"
       @hideLinks="menuHide"
     />
-    <section>
+    <!-- <section>
       <div class="container">
         <h2 class="text-center mb-4">よくあるご質問</h2>
         <faq-Items />
       </div>
-    </section>
-    <section>
+    </section> -->
+    <!-- <section>
       <div class="container">
         <h2 class="text-center mb-4">お客様の声</h2>
       </div>
       <voice-Items />
+    </section> -->
+    <section>
+      <div class="container">
+        <h2 class="text-center mb-4">お問い合わせ</h2>
+        <contact-form />
+      </div>
     </section>
+
     <div style="height: 1000px"></div>
     <div style="height: 1000px" ref="link1" class="linkChange" id="link1">
       link1
@@ -60,6 +67,9 @@ import GlobalHeader from '@/components/GlobalHeader'
 import GlobalMenu from '@/components/GlobalMenu'
 import FaqItems from '@/components/FaqItems'
 import VoiceItems from '@/components/VoiceItems'
+import ContactForm from '@/components/ContactForm'
+
+import MixinWindowFix from '@/mixins/windowFix'
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -70,9 +80,6 @@ if (process.client) {
 export default {
   data() {
     return {
-      windowFixTargetIdList: [
-        'global-header'
-      ],
       globalLinks: [
         {
           name: 'link1',
@@ -100,25 +107,14 @@ export default {
     GlobalMenu,
     FaqItems,
     VoiceItems,
+    ContactForm,
   },
+  mixins: [
+    MixinWindowFix,
+  ],
   methods: {
     test() {
       console.log('test')
-    },
-    windowFix() {
-      const scrollBarWidth = window.innerWidth - document.body.clientWidth;
-      document.documentElement.style.overflow = 'hidden';
-      document.documentElement.style.paddingRight = `${scrollBarWidth}px`;
-      this.windowFixTargetIdList.forEach(targetId => {
-        document.getElementById(targetId).style.paddingRight = `${scrollBarWidth}px`;
-      });
-    },
-    windowFixClear() {
-      document.documentElement.style.overflow = null;
-      document.documentElement.style.paddingRight = null;
-      this.windowFixTargetIdList.forEach(targetId => {
-        document.getElementById(targetId).style.paddingRight = null;
-      });
     },
     scrollTo(path) {
       this.$scrollTo(path, {
@@ -174,7 +170,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .page-container {
   padding-top: 72px;
   background: #eee;

@@ -11,10 +11,12 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
     "bootstrap": "^5.0.0-alpha2",
+    "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.6.5",
     "gsap": "^3.5.1",
     "nuxt": "^2.14.6",
     "nuxt-webfontloader": "^1.1.0",
+    "vee-validate": "^3.4.2",
     "vue-scrollto": "^2.19.1",
     "vue-slick-carousel": "^1.0.6"
   },

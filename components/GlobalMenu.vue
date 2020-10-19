@@ -86,7 +86,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, .8);
+  background: $color-overlay;
   z-index: $z-menu;
   @include mq(md) {
     display: none;

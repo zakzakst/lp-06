@@ -24,6 +24,7 @@ export default {
   plugins: [
     {src: '@/plugins/vue-scrollto'},
     {src: '@/plugins/vue-slick-carousel'},
+    {src: '@/plugins/vee-validate'},
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -39,6 +40,7 @@ export default {
     '@nuxtjs/axios',
     'nuxt-svg-loader',
     'nuxt-webfontloader',
+    'cookie-universal-nuxt',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -49,6 +51,7 @@ export default {
     extractCSS: true,
     transpile: [
       'gsap',
+      'vee-validate/dist/rules',
     ],
   },
 
