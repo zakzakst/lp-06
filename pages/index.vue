@@ -16,24 +16,31 @@
       @clickLink="menuHideScroll"
       @hideLinks="menuHide"
     />
+    <section>
+      <div class="container">
+        <h2 class="text-center mb-4">多くの企業様に導入いただいてます</h2>
+        <p class="text-center mb-2">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+      </div>
+      <logo-items />
+    </section>
     <!-- <section>
       <div class="container">
         <h2 class="text-center mb-4">よくあるご質問</h2>
-        <faq-Items />
+        <faq-items />
       </div>
     </section> -->
     <!-- <section>
       <div class="container">
         <h2 class="text-center mb-4">お客様の声</h2>
       </div>
-      <voice-Items />
+      <voice-items />
     </section> -->
-    <section>
+    <!-- <section id="form">
       <div class="container">
         <h2 class="text-center mb-4">お問い合わせ</h2>
         <contact-form />
       </div>
-    </section>
+    </section> -->
 
     <div style="height: 1000px"></div>
     <div style="height: 1000px" ref="link1" class="linkChange" id="link1">
@@ -56,15 +63,13 @@
         One of three columns
       </div>
     </div> -->
-    <div id="form" style="height: 1000px">
-      form
-    </div>
   </div>
 </template>
 
 <script>
 import GlobalHeader from '@/components/GlobalHeader'
 import GlobalMenu from '@/components/GlobalMenu'
+import LogoItems from '@/components/LogoItems'
 import FaqItems from '@/components/FaqItems'
 import VoiceItems from '@/components/VoiceItems'
 import ContactForm from '@/components/ContactForm'
@@ -105,6 +110,7 @@ export default {
   components: {
     GlobalHeader,
     GlobalMenu,
+    LogoItems,
     FaqItems,
     VoiceItems,
     ContactForm,
