@@ -16,13 +16,21 @@
       @clickLink="menuHideScroll"
       @hideLinks="menuHide"
     />
+    <div style="height: 1000px"></div>
     <section>
+      <div class="container">
+        <h2 class="text-center mb-4">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</h2>
+        <p class="text-center mb-4">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+        <chart-items />
+      </div>
+    </section>
+    <!-- <section>
       <div class="container">
         <h2 class="text-center mb-4">多くの企業様に導入いただいてます</h2>
         <p class="text-center mb-2">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
       </div>
       <logo-items />
-    </section>
+    </section> -->
     <!-- <section>
       <div class="container">
         <h2 class="text-center mb-4">よくあるご質問</h2>
@@ -42,7 +50,6 @@
       </div>
     </section> -->
 
-    <div style="height: 1000px"></div>
     <div style="height: 1000px" ref="link1" class="linkChange" id="link1">
       link1
     </div>
@@ -69,6 +76,7 @@
 <script>
 import GlobalHeader from '@/components/GlobalHeader'
 import GlobalMenu from '@/components/GlobalMenu'
+import ChartItems from '@/components/ChartItems'
 import LogoItems from '@/components/LogoItems'
 import FaqItems from '@/components/FaqItems'
 import VoiceItems from '@/components/VoiceItems'
@@ -110,6 +118,7 @@ export default {
   components: {
     GlobalHeader,
     GlobalMenu,
+    ChartItems,
     LogoItems,
     FaqItems,
     VoiceItems,
