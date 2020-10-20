@@ -17,13 +17,32 @@
       @hideLinks="menuHide"
     />
     <div style="height: 1000px"></div>
-    <section>
+    <section ref="feature">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="feature__img" :class="{'is-animated': featureImgIsAnimated}">
+              <img src="https://picsum.photos/id/237/400/300" class="shadow-lg rounded-lg" width="400" height="300" alt="">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <ul class="feature__items" :class="{'is-animated': featureItemsIsAnimated}">
+              <li class="feature__item">テキストが入ります。テキストが入ります。テキストが入ります。</li>
+              <li class="feature__item">テキストが入ります。テキストが入ります。</li>
+              <li class="feature__item">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button @click="test">test</button>
+    </section>
+    <!-- <section>
       <div class="container">
         <h2 class="text-center mb-4">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</h2>
         <p class="text-center mb-4">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
         <chart-items />
       </div>
-    </section>
+    </section> -->
     <!-- <section>
       <div class="container">
         <h2 class="text-center mb-4">多くの企業様に導入いただいてます</h2>
@@ -59,17 +78,6 @@
     <div style="height: 1000px" ref="link3" class="linkChange" id="link3">
       link3
     </div>
-    <!-- <div class="row">
-      <div class="col-sm">
-        One of three columns
-      </div>
-      <div class="col-sm">
-        One of three columns
-      </div>
-      <div class="col-sm">
-        One of three columns
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -113,6 +121,8 @@ export default {
       globalLinkCurrent: '',
       headerBgIsActive: false,
       menuIsActive: false,
+      featureImgIsAnimated: false,
+      featureItemsIsAnimated: false,
     }
   },
   components: {
@@ -129,7 +139,9 @@ export default {
   ],
   methods: {
     test() {
-      console.log('test')
+      // console.log('test')
+      this.featureImgIsAnimated = true;
+      this.featureItemsIsAnimated = true;
     },
     scrollTo(path) {
       this.$scrollTo(path, {
@@ -174,6 +186,17 @@ export default {
       this.windowFixClear();
       this.menuIsActive = false;
       this.scrollTo(path);
+    },
+    featureHandler() {
+      ScrollTrigger.create({
+        trigger: this.$refs.feature,
+        start: "top 50%",
+        onEnter: self => {
+          this.featureImgIsAnimated = true;
+          this.featureItemsIsAnimated = true;
+          self.kill();
+        }
+      });
     }
   },
   mounted() {
@@ -181,13 +204,64 @@ export default {
     this.globalLinks.forEach(link => {
       this.headerLinkHandler(this.$refs[link.name]);
     });
+    this.featureHandler();
   },
 }
 </script>
 
 <style lang="scss">
+@import "@/assets/sass/base/variables";
+
 .page-container {
   padding-top: 72px;
   background: #eee;
+}
+.feature__img {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity $transition-default, transform $transition-default;
+  &.is-animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.feature__items {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  &.is-animated {
+    & > .feature__item {
+      opacity: 1;
+      transform: translateX(0);
+      &:nth-child(1) {transition-delay: .6s;}
+      &:nth-child(2) {transition-delay: .8s;}
+      &:nth-child(3) {transition-delay: 1s;}
+    }
+  }
+}
+.feature__item {
+  position: relative;
+  margin-bottom: 16px;
+  padding-left: 30px;
+  font-size: 20px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity $transition-default, transform $transition-default;
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    top: 6px;
+    left: 0;
+    background: #000;
+    transform: rotate(-45deg);
+  }
 }
 </style>
