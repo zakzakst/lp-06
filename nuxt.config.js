@@ -25,6 +25,7 @@ export default {
     {src: '@/plugins/vue-scrollto'},
     {src: '@/plugins/vue-slick-carousel'},
     {src: '@/plugins/vee-validate'},
+    {src: '@/plugins/snapsvg-cjs', mode: 'client'},
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
