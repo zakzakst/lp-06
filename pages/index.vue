@@ -16,8 +16,51 @@
       @clickLink="menuHideScroll"
       @hideLinks="menuHide"
     />
-    <div style="height: 1000px"></div>
-    <section ref="feature">
+    <!-- <div style="height: 1000px"></div>
+    <button @click="test">test</button> -->
+    <!-- <div class="container">
+      <div ref="about1" class="row py-2">
+        <div class="col-sm-4 d-flex align-items-center">
+          <about-img
+            :bgImg="aboutImg1"
+            :isAnimated="aboutImg1IsAnimated"
+          />
+        </div>
+        <div class="col-sm-8 d-flex align-items-center">
+          <about-content
+            direction="right"
+            :isAnimated="aboutContent1IsAnimated"
+          >
+            <template v-slot:heading>テキストが入ります</template>
+            <template v-slot:text>
+              <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+              <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+            </template>
+          </about-content>
+        </div>
+      </div>
+      <div ref="about2" class="row py-2 flex-sm-row-reverse">
+        <div class="col-sm-4 d-flex align-items-center">
+          <about-img
+            :bgImg="aboutImg2"
+            :isAnimated="aboutImg2IsAnimated"
+          />
+        </div>
+        <div class="col-sm-8 d-flex align-items-center">
+          <about-content
+            direction="left"
+            :isAnimated="aboutContent2IsAnimated"
+          >
+            <template v-slot:heading>テキストが入ります</template>
+            <template v-slot:text>
+              <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+              <p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+            </template>
+          </about-content>
+        </div>
+      </div>
+    </div> -->
+    <!-- <section ref="feature">
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
@@ -35,7 +78,7 @@
         </div>
       </div>
       <button @click="test">test</button>
-    </section>
+    </section> -->
     <!-- <section>
       <div class="container">
         <h2 class="text-center mb-4">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</h2>
@@ -84,15 +127,18 @@
 <script>
 import GlobalHeader from '@/components/GlobalHeader'
 import GlobalMenu from '@/components/GlobalMenu'
+import AboutImg from '@/components/AboutImg'
+import AboutContent from '@/components/AboutContent'
 import ChartItems from '@/components/ChartItems'
-import LogoItems from '@/components/LogoItems'
+// import LogoItems from '@/components/LogoItems'
+import LogoItems from '@/components/LogoItems2'
 import FaqItems from '@/components/FaqItems'
 import VoiceItems from '@/components/VoiceItems'
 import ContactForm from '@/components/ContactForm'
 
 import MixinWindowFix from '@/mixins/windowFix'
 
-import { gsap } from "gsap";
+import { gsap } from "gsap"
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 if (process.client) {
   gsap.registerPlugin(ScrollTrigger)
@@ -121,6 +167,12 @@ export default {
       globalLinkCurrent: '',
       headerBgIsActive: false,
       menuIsActive: false,
+      aboutImg1: 'https://picsum.photos/id/237/144/144',
+      aboutImg1IsAnimated: false,
+      aboutContent1IsAnimated: false,
+      aboutImg2: 'https://picsum.photos/id/238/144/144',
+      aboutImg2IsAnimated: false,
+      aboutContent2IsAnimated: false,
       featureImgIsAnimated: false,
       featureItemsIsAnimated: false,
     }
@@ -128,6 +180,8 @@ export default {
   components: {
     GlobalHeader,
     GlobalMenu,
+    AboutImg,
+    AboutContent,
     ChartItems,
     LogoItems,
     FaqItems,
@@ -139,9 +193,11 @@ export default {
   ],
   methods: {
     test() {
-      // console.log('test')
-      this.featureImgIsAnimated = true;
-      this.featureItemsIsAnimated = true;
+      console.log('test');
+      this.aboutImg1IsAnimated = true;
+      this.aboutContent1IsAnimated = true;
+      this.aboutImg2IsAnimated = true;
+      this.aboutContent2IsAnimated = true;
     },
     scrollTo(path) {
       this.$scrollTo(path, {
@@ -187,6 +243,26 @@ export default {
       this.menuIsActive = false;
       this.scrollTo(path);
     },
+    aboutHandler() {
+      ScrollTrigger.create({
+        trigger: this.$refs.about1,
+        start: "top 50%",
+        onEnter: self => {
+          this.aboutImg1IsAnimated = true;
+          this.aboutContent1IsAnimated = true;
+          self.kill();
+        }
+      });
+      ScrollTrigger.create({
+        trigger: this.$refs.about2,
+        start: "top 50%",
+        onEnter: self => {
+          this.aboutImg2IsAnimated = true;
+          this.aboutContent2IsAnimated = true;
+          self.kill();
+        }
+      });
+    },
     featureHandler() {
       ScrollTrigger.create({
         trigger: this.$refs.feature,
@@ -204,6 +280,7 @@ export default {
     this.globalLinks.forEach(link => {
       this.headerLinkHandler(this.$refs[link.name]);
     });
+    this.aboutHandler();
     this.featureHandler();
   },
 }
