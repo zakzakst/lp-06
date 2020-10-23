@@ -121,6 +121,24 @@
     <div style="height: 1000px" ref="link3" class="linkChange" id="link3">
       link3
     </div>
+    <parallax-bg
+      :parallax="`${parallaxBgMove}%`"
+      :parallaxRate=0.7
+      position="-10%"
+      img="/img/bg01.png"
+    />
+    <parallax-bg
+      :parallax="`${parallaxBgMove}%`"
+      :parallaxRate=2
+      position="20%"
+      img="/img/bg02.png"
+    />
+    <parallax-bg
+      :parallax="`${parallaxBgMove}%`"
+      :parallaxRate=0.2
+      position="110%"
+      img="/img/bg03.png"
+    />
   </div>
 </template>
 
@@ -135,6 +153,7 @@ import LogoItems from '@/components/LogoItems2'
 import FaqItems from '@/components/FaqItems'
 import VoiceItems from '@/components/VoiceItems'
 import ContactForm from '@/components/ContactForm'
+import ParallaxBg from '@/components/ParallaxBg'
 
 import MixinWindowFix from '@/mixins/windowFix'
 
@@ -175,6 +194,7 @@ export default {
       aboutContent2IsAnimated: false,
       featureImgIsAnimated: false,
       featureItemsIsAnimated: false,
+      parallaxBgMove: 0,
     }
   },
   components: {
@@ -187,6 +207,7 @@ export default {
     FaqItems,
     VoiceItems,
     ContactForm,
+    ParallaxBg,
   },
   mixins: [
     MixinWindowFix,
@@ -273,6 +294,18 @@ export default {
           self.kill();
         }
       });
+    },
+    parallaxBgHandler() {
+      gsap.to(this.$data, {
+        scrollTrigger: {
+          trigger: this.$refs.pageContainer,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1.5,
+        },
+        parallaxBgMove: -50,
+        ease: 'none',
+      });
     }
   },
   mounted() {
@@ -282,6 +315,7 @@ export default {
     });
     this.aboutHandler();
     this.featureHandler();
+    this.parallaxBgHandler();
   },
 }
 </script>
@@ -290,8 +324,9 @@ export default {
 @import "@/assets/sass/base/variables";
 
 .page-container {
+  position: relative;
   padding-top: 72px;
-  background: #eee;
+  overflow: hidden;
 }
 .feature__img {
   text-align: center;
