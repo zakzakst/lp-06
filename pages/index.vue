@@ -16,9 +16,21 @@
       @clickLink="menuHideScroll"
       @hideLinks="menuHide"
     />
-    <!-- <div style="height: 1000px"></div>
-    <button @click="test">test</button> -->
-    <!-- <div class="container">
+    <div class="hero">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="hero__conetent" :class="{'is-animated': heroIsAnimated}">
+              <h1 class="hero__title">タイトルが入ります</h1>
+              <p class="hero__text">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+              <p class="hero__text">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero__img"></div>
+      </div>
+    </div>
+    <div ref="about" id="about" class="container py-5">
       <div ref="about1" class="row py-2">
         <div class="col-sm-4 d-flex align-items-center">
           <about-img
@@ -59,13 +71,13 @@
           </about-content>
         </div>
       </div>
-    </div> -->
-    <!-- <section ref="feature">
+    </div>
+    <section ref="feature" id="feature" class="py-5">
       <div class="container">
         <div class="row">
           <div class="col-sm-6">
             <div class="feature__img" :class="{'is-animated': featureImgIsAnimated}">
-              <img src="https://picsum.photos/id/237/400/300" class="shadow-lg rounded-lg" width="400" height="300" alt="">
+              <img src="https://picsum.photos/id/237/400/300" class="shadow-lg rounded-lg" alt="">
             </div>
           </div>
           <div class="col-sm-6">
@@ -77,65 +89,54 @@
           </div>
         </div>
       </div>
-      <button @click="test">test</button>
-    </section> -->
-    <!-- <section>
+    </section>
+    <section class="py-5">
       <div class="container">
         <h2 class="text-center mb-4">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</h2>
         <p class="text-center mb-4">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
         <chart-items />
       </div>
-    </section> -->
-    <!-- <section>
+    </section>
+    <section class="py-5">
       <div class="container">
         <h2 class="text-center mb-4">多くの企業様に導入いただいてます</h2>
         <p class="text-center mb-2">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
       </div>
       <logo-items />
-    </section> -->
-    <!-- <section>
+    </section>
+    <section ref="faq" id="faq" class="py-5">
       <div class="container">
         <h2 class="text-center mb-4">よくあるご質問</h2>
         <faq-items />
       </div>
-    </section> -->
-    <!-- <section>
+    </section>
+    <section ref="voices" id="voices" class="py-5">
       <div class="container">
         <h2 class="text-center mb-4">お客様の声</h2>
       </div>
       <voice-items />
-    </section> -->
-    <!-- <section id="form">
+    </section>
+    <section id="form" class="bg-light py-5">
       <div class="container">
         <h2 class="text-center mb-4">お問い合わせ</h2>
         <contact-form />
       </div>
-    </section> -->
-
-    <div style="height: 1000px" ref="link1" class="linkChange" id="link1">
-      link1
-    </div>
-    <div style="height: 1000px" ref="link2" class="linkChange" id="link2">
-      link2
-    </div>
-    <div style="height: 1000px" ref="link3" class="linkChange" id="link3">
-      link3
-    </div>
+    </section>
     <parallax-bg
       :parallax="`${parallaxBgMove}%`"
-      :parallaxRate=0.7
+      :parallaxRate=0.005
       position="-10%"
       img="/img/bg01.png"
     />
     <parallax-bg
       :parallax="`${parallaxBgMove}%`"
-      :parallaxRate=2
+      :parallaxRate=0.015
       position="20%"
       img="/img/bg02.png"
     />
     <parallax-bg
       :parallax="`${parallaxBgMove}%`"
-      :parallaxRate=0.2
+      :parallaxRate=0.01
       position="110%"
       img="/img/bg03.png"
     />
@@ -145,6 +146,7 @@
 <script>
 import GlobalHeader from '@/components/GlobalHeader'
 import GlobalMenu from '@/components/GlobalMenu'
+// import Hero from '@/components/Hero'
 import AboutImg from '@/components/AboutImg'
 import AboutContent from '@/components/AboutContent'
 import ChartItems from '@/components/ChartItems'
@@ -168,24 +170,30 @@ export default {
     return {
       globalLinks: [
         {
-          name: 'link1',
-          label: 'リンク1',
-          path: '#link1',
+          name: 'about',
+          label: '○○について',
+          path: '#about',
         },
         {
-          name: 'link2',
-          label: 'リンク2',
-          path: '#link2',
+          name: 'feature',
+          label: '特長',
+          path: '#feature',
         },
         {
-          name: 'link3',
-          label: 'リンク3',
-          path: '#link3',
+          name: 'faq',
+          label: 'よくあるご質問',
+          path: '#faq',
+        },
+        {
+          name: 'voices',
+          label: 'お客様の声',
+          path: '#voices',
         },
       ],
       globalLinkCurrent: '',
       headerBgIsActive: false,
       menuIsActive: false,
+      heroIsAnimated: false,
       aboutImg1: 'https://picsum.photos/id/237/144/144',
       aboutImg1IsAnimated: false,
       aboutContent1IsAnimated: false,
@@ -200,6 +208,7 @@ export default {
   components: {
     GlobalHeader,
     GlobalMenu,
+    // Hero,
     AboutImg,
     AboutContent,
     ChartItems,
@@ -213,13 +222,6 @@ export default {
     MixinWindowFix,
   ],
   methods: {
-    test() {
-      console.log('test');
-      this.aboutImg1IsAnimated = true;
-      this.aboutContent1IsAnimated = true;
-      this.aboutImg2IsAnimated = true;
-      this.aboutContent2IsAnimated = true;
-    },
     scrollTo(path) {
       this.$scrollTo(path, {
         offset: -72,
@@ -264,6 +266,9 @@ export default {
       this.menuIsActive = false;
       this.scrollTo(path);
     },
+    heroAnim() {
+      this.heroIsAnimated = true;
+    },
     aboutHandler() {
       ScrollTrigger.create({
         trigger: this.$refs.about1,
@@ -303,7 +308,7 @@ export default {
           end: 'bottom bottom',
           scrub: 1.5,
         },
-        parallaxBgMove: -50,
+        parallaxBgMove: -10,
         ease: 'none',
       });
     }
@@ -317,6 +322,18 @@ export default {
     this.featureHandler();
     this.parallaxBgHandler();
   },
+  computed: {
+    loadDone() {
+      return this.$store.getters.loadDone;
+    }
+  },
+  watch: {
+    loadDone(newValue, oldValue) {
+      if (newValue && !oldValue) {
+        this.heroAnim();
+      }
+    }
+  }
 }
 </script>
 
@@ -328,6 +345,32 @@ export default {
   padding-top: 72px;
   overflow: hidden;
 }
+.hero__conetent {
+  display: flex;
+  min-height: 400px;
+  flex-direction: column;
+  justify-content: center;
+  &.is-animated {
+    .hero__title,
+    .hero__text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+.hero__title,
+.hero__text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity $transition-default, transform $transition-default;
+}
+.hero__title {
+  transition-delay: .1s;
+}
+.hero__text {
+  transition-delay: .2s;
+}
+.hero__img {}
 .feature__img {
   text-align: center;
   opacity: 0;
@@ -336,6 +379,9 @@ export default {
   &.is-animated {
     opacity: 1;
     transform: translateY(0);
+  }
+  & > img {
+    width: 100%;
   }
 }
 .feature__items {

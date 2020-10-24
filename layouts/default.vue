@@ -5,6 +5,13 @@
 </template>
 
 <script>
+import loadingMixin from '@/mixins/loading'
+
+export default {
+  mixins: [
+    loadingMixin,
+  ]
+}
 </script>
 
 <style>

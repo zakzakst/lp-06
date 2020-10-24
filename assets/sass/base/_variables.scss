@@ -22,6 +22,7 @@ $breakpoints: (
 $z-header: 100;
 $z-menu: 101;
 $z-parallax-bg: -100;
+$z-loading: 1000;
 
 // COLORS
 $color-primary: #333333;
@@ -37,3 +38,4 @@ $color-disabled: #999999;
 // TRANSITION
 $transition-fast: .3s;
 $transition-default: .5s;
+$transition-slow: .7s;

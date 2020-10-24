@@ -69,7 +69,7 @@ export default {
   transition: background 1s;
   z-index: $z-header;
   &.is-active--bg {
-    background: rgba(255, 255, 255, .7);
+    background: rgba(255, 255, 255, .85);
   }
   // &.is-active--menu {
   //   background: rgba(255, 255, 255, 1);
