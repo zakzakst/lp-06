@@ -3,7 +3,8 @@
     <div>
       <div class="logo-items">
         <div v-for="(item, index) in itemsTwice" :key="index" class="logo-item">
-          <img :src="`/img/company-logo/${item.img}`" :alt="item.alt">
+          <!-- <img :src="`/img/company-logo/${item.img}`" :alt="item.alt"> -->
+          <img :src="`/works/lp-06/img/company-logo/${item.img}`" :alt="item.alt">
         </div>
       </div>
     </div>
