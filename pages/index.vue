@@ -17,7 +17,7 @@
       @hideLinks="menuHide"
     />
     <div class="hero">
-      <div class="container">
+      <div class="container position-relative">
         <div class="row">
           <div class="col-sm-6">
             <div class="hero__conetent" :class="{'is-animated': heroIsAnimated}">
@@ -27,7 +27,18 @@
             </div>
           </div>
         </div>
-        <div class="hero__img"></div>
+        <div class="hero__img">
+          <svg ref="svg" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <mask id="hero__img-mask" class="hero__img-mask">
+                <path d="M 0 150 l 150 -150 l 150 150 l -150 150 l -150 -150 Z" />
+              </mask>
+            </defs>
+            <foreignObject class="hero__img-wrapper" width="300" height="300" mask="url(#hero__img-mask)">
+              <div class="hero__img-img"></div>
+            </foreignObject>
+          </svg>
+        </div>
       </div>
     </div>
     <div ref="about" id="about" class="container py-5">
@@ -77,7 +88,7 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="feature__img" :class="{'is-animated': featureImgIsAnimated}">
-              <img src="https://picsum.photos/id/237/400/300" class="shadow-lg rounded-lg" alt="">
+              <img src="https://picsum.photos/id/5/400/300" class="shadow-lg rounded-lg" alt="">
             </div>
           </div>
           <div class="col-sm-6">
@@ -194,10 +205,10 @@ export default {
       headerBgIsActive: false,
       menuIsActive: false,
       heroIsAnimated: false,
-      aboutImg1: 'https://picsum.photos/id/237/144/144',
+      aboutImg1: 'https://picsum.photos/id/1029/300/300',
       aboutImg1IsAnimated: false,
       aboutContent1IsAnimated: false,
-      aboutImg2: 'https://picsum.photos/id/238/144/144',
+      aboutImg2: 'https://picsum.photos/id/180/300/300',
       aboutImg2IsAnimated: false,
       aboutContent2IsAnimated: false,
       featureImgIsAnimated: false,
@@ -347,7 +358,7 @@ export default {
 }
 .hero__conetent {
   display: flex;
-  min-height: 400px;
+  // min-height: 400px;
   flex-direction: column;
   justify-content: center;
   &.is-animated {
@@ -357,20 +368,45 @@ export default {
       transform: translateY(0);
     }
   }
+  @include mq(sm) {
+    min-height: 400px;
+  }
 }
 .hero__title,
 .hero__text {
+  font-family: 'Noto Serif JP', serif;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity $transition-default, transform $transition-default;
 }
 .hero__title {
+  font-weight: bold;
   transition-delay: .1s;
 }
 .hero__text {
   transition-delay: .2s;
 }
-.hero__img {}
+.hero__img {
+  position: absolute;
+  display: none;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+  @include mq(sm) {
+    display: block;
+  }
+}
+.hero__img-mask {
+  fill: #fff;
+}
+.hero__img-img {
+  width: 300px;
+  height: 300px;
+  background: url(https://picsum.photos/id/1/600/600) no-repeat center center;
+  background-size: cover;
+}
 .feature__img {
   text-align: center;
   opacity: 0;

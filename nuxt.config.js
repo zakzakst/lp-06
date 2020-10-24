@@ -64,7 +64,7 @@ export default {
 
   webfontloader: {
     google: {
-      families: ['Noto+Sans+JP:wght@100;300;700;900']
+      families: ['Noto+Serif+JP:wght@400;700']
     }
   },
 

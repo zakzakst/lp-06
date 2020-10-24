@@ -1,15 +1,19 @@
 TODO:
-  ☐ ヒーローセクションの実装
-  ☐ モーダル時のウインドウ固定のpaddingをstoreに管理してできないか試す
-  ☐ bootstrapカスタマイズCSS作る
-  ☐ webfont設定
-  ☐ style-resourcesのvariables.scssが効いてない
+  ☐ 静的HTMLの書き出し
+  ☐ アップするディレクトリの設定
+  ☐ デプロイ
 
 最後に対応:
   ☐ mixinsにまとめるスクリプトあるか検討
   ☐ 最後にVScodeまわりの修正あれば「00」のほうにコピーしておく
 
 Archive:
+  ✘ メタタグの設定 @cancelled(20-10-25 02:22) @project(TODO)
+  ✔ ヒーローセクションの実装 @done(20-10-25 02:20) @project(TODO)
+  ✘ モーダル時のウインドウ固定のpaddingをstoreに管理してできないか試す @cancelled(20-10-25 02:20) @project(TODO)
+  ✘ bootstrapカスタマイズCSS作る @cancelled(20-10-25 02:20) @project(TODO)
+  ✔ webfont設定 @done(20-10-25 02:20) @project(TODO)
+  ✘ style-resourcesのvariables.scssが効いてない @cancelled(20-10-25 02:20) @project(TODO)
   ✔ ローディング表示の実装 @done(20-10-24 00:14) @project(TODO)
   ✔ ローディング時の画面固定 @done(20-10-23 23:55) @project(TODO)
   ✔ 背景パララックスの実装 @done(20-10-23 22:51) @project(TODO)
