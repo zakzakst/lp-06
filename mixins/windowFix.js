@@ -4,6 +4,7 @@ export default {
       windowFixTargetIdList: [
         'global-header',
         'modal',
+        'loading',
       ],
     }
   },
