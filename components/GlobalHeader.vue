@@ -3,7 +3,8 @@
     <div class="container">
       <div class="header">
         <div class="header__logo">
-          <img src="/img/logo.png" alt="LOGO">
+          <!-- <img src="/img/logo.png" alt="LOGO"> -->
+          <img src="/works/lp-06/img/logo.png" alt="LOGO">
         </div>
         <ul class="header__links">
           <li v-for="link in links" :key="link.label">

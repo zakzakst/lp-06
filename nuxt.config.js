@@ -15,6 +15,10 @@ export default {
     ]
   },
 
+  router: {
+    base: '/works/lp-06',
+  },
+
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     '@/assets/style.scss',
@@ -55,6 +59,10 @@ export default {
       'vee-validate/dist/rules',
     ],
   },
+
+  // generate: {
+  //   dir: 'works/lp-06'
+  // },
 
   styleResources: {
     scss: [

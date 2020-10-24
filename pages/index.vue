@@ -137,19 +137,19 @@
       :parallax="`${parallaxBgMove}%`"
       :parallaxRate=0.005
       position="-10%"
-      img="/img/bg01.png"
+      img="/works/lp-06/img/bg01.png"
     />
     <parallax-bg
       :parallax="`${parallaxBgMove}%`"
       :parallaxRate=0.015
       position="20%"
-      img="/img/bg02.png"
+      img="/works/lp-06/img/bg02.png"
     />
     <parallax-bg
       :parallax="`${parallaxBgMove}%`"
       :parallaxRate=0.01
       position="110%"
-      img="/img/bg03.png"
+      img="/works/lp-06/img/bg03.png"
     />
   </div>
 </template>
