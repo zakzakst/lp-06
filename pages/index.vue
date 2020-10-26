@@ -110,6 +110,16 @@
     </section>
     <section class="py-5">
       <div class="container">
+        <h2 class="text-center mb-4">動画紹介</h2>
+        <p class="text-center mb-4">テキストが入ります。テキストが入ります。テキストが入ります。</p>
+        <video-item
+          src="/works/lp-06/video/video.mp4"
+          poster="/works/lp-06/video/video.png"
+        />
+      </div>
+    </section>
+    <section class="py-5">
+      <div class="container">
         <h2 class="text-center mb-4">多くの企業様に導入いただいてます</h2>
         <p class="text-center mb-2">テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
       </div>
@@ -161,6 +171,7 @@ import GlobalMenu from '@/components/GlobalMenu'
 import AboutImg from '@/components/AboutImg'
 import AboutContent from '@/components/AboutContent'
 import ChartItems from '@/components/ChartItems'
+import VideoItem from '@/components/VideoItem'
 // import LogoItems from '@/components/LogoItems'
 import LogoItems from '@/components/LogoItems2'
 import FaqItems from '@/components/FaqItems'
@@ -223,6 +234,7 @@ export default {
     AboutImg,
     AboutContent,
     ChartItems,
+    VideoItem,
     LogoItems,
     FaqItems,
     VoiceItems,
